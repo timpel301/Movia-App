@@ -3,7 +3,7 @@ kind: Service
 metadata: 
   name: Hello-world
   labels:
-    app: Hello-world
+    app: teamtech
 spec:
   type: ClusterIP
   ports:
@@ -11,4 +11,4 @@ spec:
       protocol: TCP
       targetPort: 80
   selector:
-    app: Hello-world
+    app: teamtech

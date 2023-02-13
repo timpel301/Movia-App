@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech-deployment
+  labels:
+    app: teamtech
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamtech
+  template:
+    metadata:
+      labels:
+        app: teamtech
+    spec:
+      containers:
+      - name: nginx
+        image: devops2022.azurecr.io/tech:latest
+        ports:
+        - containerPort: 80
+
