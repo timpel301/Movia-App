@@ -44,15 +44,15 @@ pipeline {
                     sh("git config user.name 'jenkins'")
                     //sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/argocd-team4.git chris")
                     sh("git checkout main")
-                    sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/teamtech.git chris")
+                    sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git chris")
                     //sh("git status")
                     sh("kustomize edit set image devops2022.azurecr.io/tech:$GIT_COMMIT")
-                    sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/teamtech.git chris")
+                    sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git chris")
                     //sh("git status")
                     sh("git add kustomization.yaml")
                     //sh("git status")
                     sh("git commit -m 'modified nginx with $GIT_COMMIT'")
-                    sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/teamtech.git chris")
+                    sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git chris")
                 }
             }
         }
