@@ -49,7 +49,7 @@ pipeline {
                     sh("kustomize edit set image devops2022.azurecr.io/tech:$GIT_COMMIT")
                     sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
                     //sh("git status")
-                    sh("git add kustomize/Kustomize.yaml")
+                    sh("git add kustomize/kustomization.yaml")
                     //sh("git status")
                     sh("git commit -m 'modified nginx with $GIT_COMMIT'")
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
