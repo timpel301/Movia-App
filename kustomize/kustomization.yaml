@@ -6,4 +6,4 @@ resources:
 - k8s/ingress.yaml
 images:
 - name: devops2022.azurecr.io/tech
-  newTag: 13b89aa480960b7eec2f3acf32b83f9eaed70e11
+  newTag: 909eee502a328f0f05dc345444ef066333d3b89e
