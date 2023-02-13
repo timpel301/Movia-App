@@ -32,7 +32,7 @@ pipeline {
         //        }
         //    }
         //}
-        stage('git push'){
+        stage('GIT PULL & PUSH'){
             agent {
                 docker {
                     image 'alpine/k8s:1.23.16'
