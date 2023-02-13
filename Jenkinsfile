@@ -46,7 +46,7 @@ pipeline {
                     sh("git checkout main")
                     sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
                     //sh("git status")
-                    sh("kustomize edit set image devops2022.azurecr.io/tech:$GIT_COMMIT kustomize/kustomize.yaml")
+                    sh("cd ./kustomize && kustomize edit set image devops2022.azurecr.io/tech:$GIT_COMMIT && cd ..")
                     sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
                     //sh("git status")
                     sh("git add kustomize/kustomize.yaml")
