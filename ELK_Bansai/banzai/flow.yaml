@@ -1,0 +1,19 @@
+apiVersion: logging.banzaicloud.io/v1beta1
+kind: ClusterFlow
+metadata:
+  name: es-clusterflow
+spec:
+  filters:
+    - tag_normaliser: {}
+    - parser:
+        remove_key_name_field: true
+        reserve_data: true
+        parse:
+          type: nginx
+  match:
+     - select:
+         namespaces:
+          - mecominds
+          - teamtech-ns        
+  globalOutputRefs:
+    - es-clusteroutput
