@@ -4,4 +4,4 @@ resources:
 - k8s/
 images:
 - name: devops2022.azurecr.io/tech
-  newTag: a1b0dbf91a96ed1ea6877694a4508c417949910a
+  newTag: 8965f5f0747fdb33f78d9c8c83fdfa059b6dd02e
