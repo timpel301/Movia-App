@@ -4,4 +4,4 @@ resources:
 - k8s/*.yaml
 images:
 - name: devops2022.azurecr.io/tech
-  newTag: 8965f5f0747fdb33f78d9c8c83fdfa059b6dd02e
+  newTag: 5b56490c19771aab3d29722dab1e7d08e459ab78
