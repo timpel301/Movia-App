@@ -1,0 +1,170 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  /* Set full viewport height for the body */
+  html, body {
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+  }
+  
+  /* Define header styles */
+  header {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    background-color: black;
+    text-align: center;
+    color: magenta;
+    justify-content: flex-end;
+    border-bottom: 2px solid magenta;
+  }
+
+/* Define Navigation bar */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; 
+  justify-items: flex-end;
+}
+
+.navlinks {
+  text-decoration: none;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid magenta;
+  box-shadow: 0px 0px 10px 2px magenta;
+  color: magenta;
+}
+
+.navlinks:hover {
+  background-color: magenta;
+  color: black;
+}
+  
+.navlinks:active {
+  background-color: white;
+  color: black;
+}
+  
+  /* Define main section styles */
+  main {
+    height: 75%;
+    background-image: url(../img/repetitive_bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  h2 {
+    padding-top: 10px;
+    padding-left: 30px;
+    text-align: left;
+  }
+  
+  .mainContent {
+    display: flex;
+    max-height: 80%;
+    flex-flow: space-evenly;
+  }
+  
+  /* Define movie pictures for main section */
+  .mainContent div {
+    flex: 1;
+    flex-basis: 0;
+    box-sizing: border-box;
+    background-color: black;
+    margin: 10px;
+  }
+  
+  img {
+    border: solid magenta 2px;
+  }
+  
+  img:hover {
+    border: solid magenta 2px;
+    box-shadow: 0px 0px 5px 2px magenta;
+    opacity: 0.5;
+    z-index: -3;
+  }
+  
+  .makeReservation {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  .movieText {
+    border: solid magenta 2px;
+    color: magenta;
+    background-color: black;
+    padding: 3%;
+    margin-top: -3px;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 10px;
+    margin-top: 20px;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  input, select {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  input[type="submit"] {
+    background-color: magenta;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+    grid-column: 1 / span 2; /* make the submit button span both columns */
+    margin-top: 20px;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: magenta;
+  }
+
+  /* Define footer styles */
+  footer {
+    border-top: 2px solid magenta;
+    color: magenta;
+    height: 10%; /* 1/5 of the viewport height */
+    background-color: black;
+  }
+
+  #footerText {
+      padding: 20px;
+  }
+  
