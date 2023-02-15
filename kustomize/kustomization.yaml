@@ -10,4 +10,4 @@ resources:
 - k8s/postgress-service.yaml
 images:
 - name: devops2022.azurecr.io/tech
-  newTag: 551257173437fc85e6484dfffe323aa036e08e22
+  newTag: ecae98699015b671467cbbce59d37ee21eff3253
