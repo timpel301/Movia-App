@@ -1,9 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- k8s/nginx-deployment.yaml
-- k8s/nginx-service.yaml
-- k8s/ingress.yaml
+- k8s/*
 images:
 - name: devops2022.azurecr.io/tech
   newTag: e85808b89d655ece16ccc8d2678232884a860c91
