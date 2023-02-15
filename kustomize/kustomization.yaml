@@ -10,4 +10,4 @@ resources:
 - k8s/postgres-service.yaml
 images:
 - name: devops2022.azurecr.io/tech
-  newTag: 5b56490c19771aab3d29722dab1e7d08e459ab78
+  newTag: 551257173437fc85e6484dfffe323aa036e08e22
