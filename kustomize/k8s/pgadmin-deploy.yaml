@@ -16,8 +16,8 @@ spec:
         - name: pgadmin4
           image: dpage/pgadmin4
           env:
-            - name: PGADMIN_DEFAULT_EMAIL
-              value: "admin@admin.com"
+            - name: Alpha1
+              value: "Alpha1"
             - name: PGADMIN_DEFAULT_PASSWORD
               valueFrom:
                 secretKeyRef:
