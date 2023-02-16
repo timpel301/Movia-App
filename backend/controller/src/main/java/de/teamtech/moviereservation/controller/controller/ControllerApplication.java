@@ -27,11 +27,10 @@ import java.util.Base64;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/booking")
 @SpringBootApplication
 public class ControllerApplication {
 
-	@PostMapping
+	@PostMapping("/booking")
     public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
         // Extract data from the JSON payload
         JSONObject jsonObj = new JSONObject(jsonPayload);
@@ -73,7 +72,10 @@ public class ControllerApplication {
         // Return a response
         return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
     }
-
+    @GetMapping("/alive")
+    public String alive(){
+        return "alive";
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(ControllerApplication.class, args);
