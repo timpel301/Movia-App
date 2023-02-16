@@ -30,4 +30,5 @@ spec:
             service:
               name: postgres
               port: 
-                number: 5432
+                number: 30432
+                
