@@ -9,8 +9,12 @@
   /* Set full viewport height for the body */
   html, body {
     height: 100vh;
-    background-color: black;
+    background-color: white;
     overflow: hidden;
+    background-image: url(../img/Design.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   /* Define header styles */
@@ -18,11 +22,11 @@
     display: flex;
     flex-direction: column;
     height: 15%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.9);
     text-align: center;
-    color: magenta;
+    color: #e83390;
     justify-content: flex-end;
-    border-bottom: 2px solid magenta;
+    border-bottom: 2px solid #e83390;
   }
 
 /* Define Navigation bar */
@@ -37,13 +41,13 @@ nav ul {
   text-decoration: none;
   padding: 10px;
   margin: 10px;
-  border: 2px solid magenta;
-  box-shadow: 0px 0px 10px 2px magenta;
-  color: magenta;
+  border: 2px solid #e83390;
+  box-shadow: 0px 0px 10px 2px #e83390;
+  color: #e83390;
 }
 
 .navlinks:hover {
-  background-color: magenta;
+  background-color: #e83390;
   color: black;
 }
   
@@ -55,16 +59,13 @@ nav ul {
   /* Define main section styles */
   main {
     height: 75%;
-    background-image: url(../img/repetitive_bg.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
   }
   
-  h2 {
+  #mainContentHeader {
     padding-top: 10px;
     padding-left: 30px;
     text-align: left;
+    color: #e83390;
   }
   
   .mainContent {
@@ -79,16 +80,16 @@ nav ul {
     flex-basis: 0;
     box-sizing: border-box;
     background-color: black;
-    margin: 10px;
+    margin: 15px 50px;
   }
   
   img {
-    border: solid magenta 2px;
+    border: solid #e83390 2px;
   }
   
   img:hover {
-    border: solid magenta 2px;
-    box-shadow: 0px 0px 5px 2px magenta;
+    border: solid #e83390 2px;
+    box-shadow: 0px 0px 5px 2px #e83390;
     opacity: 0.5;
     z-index: -3;
   }
@@ -103,65 +104,78 @@ nav ul {
   }
 
   .movieText {
-    border: solid magenta 2px;
-    color: magenta;
+    border: solid #e83390 2px;
+    color: #e83390;
     background-color: black;
     padding: 3%;
     margin-top: -3px;
   }
 
-  form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, auto);
-    grid-gap: 10px;
-    margin-top: 20px;
+  #movieBookingHeader {
+    padding-bottom: 10px;
   }
 
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  #bookingMain {
+    padding: 70px 0;
+  }
+
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 0;
+    border: 2px solid #e83390;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
   }
   
   label {
     display: block;
-    margin-bottom: 5px;
     font-weight: bold;
-    font-size: 16px;
+    margin-bottom: 5px;
+    text-align: left;
   }
   
   input, select {
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
     font-size: 16px;
     width: 100%;
+    text-align: left;
+  }
+
+  input:focus, select:focus {
+    box-shadow: 0px 0px 5px 2px #e83390;
   }
   
   input[type="submit"] {
-    background-color: magenta;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #e83390;
+    color: #fff;
     font-size: 16px;
+    border: none;
+    border-radius: 5px;
     padding: 10px;
-    grid-column: 1 / span 2; /* make the submit button span both columns */
-    margin-top: 20px;
+    cursor: pointer;
+    text-align: center;
   }
   
   input[type="submit"]:hover {
-    background-color: magenta;
+    background-color: #e2147f;
+    box-shadow: 0px 0px 5px 2px #e83390;
   }
+  
 
   /* Define footer styles */
   footer {
-    border-top: 2px solid magenta;
-    color: magenta;
+    border-top: 2px solid #e83390;
+    color: #e83390;
     height: 10%; /* 1/5 of the viewport height */
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.9);
   }
 
   #footerText {
