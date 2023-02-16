@@ -4,7 +4,7 @@ pipeline {
         ACRCreds = credentials('acr_creds')
     }
     stages {
-        stage('ACR LOGIN + PUSH') {
+        stage('ACR LOGIN & PUSH') {
             steps {
                 sh 'docker login devops2022.azurecr.io -u ${ACRCreds_USR} -p ${ACRCreds_PSW}'
                 sh "echo Git commit hash: $GIT_COMMIT"
