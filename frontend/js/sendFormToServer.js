@@ -12,7 +12,7 @@ form.addEventListener('submit', (event) => {
   });
 
   // send the data to the server
-  fetch(':5000/html/booking', {
+  fetch('/booking', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
