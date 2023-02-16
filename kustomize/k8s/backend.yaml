@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: devops2022.azurecr.io/teamtechbackend:v0.1.4
+        image: devops2022.azurecr.io/teamtechbackend:v0.1.6
         ports:
         - containerPort: 80
 ---
@@ -24,7 +24,7 @@ metadata:
   name: backend-service
 spec:
   ports:
-    - port: 80
+    - port: 5000
       targetPort: 80
   selector:
     app: backend
