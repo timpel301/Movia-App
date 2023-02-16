@@ -31,7 +31,7 @@ spec:
               port: 
                 number: 30432
         - pathType: Prefix
-          path: "/html"
+          path: "/booking"
           backend:
             service:
               name: backend-service
