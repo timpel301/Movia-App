@@ -10,4 +10,4 @@ spec:
   ports:
   - port: 30200
   selector:
-  app: pgadmin
+    app: pgadmin
