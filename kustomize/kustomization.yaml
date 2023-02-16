@@ -8,6 +8,7 @@ resources:
 - k8s/postgres-deploy.yaml
 - k8s/postgres-secret.yaml
 - k8s/postgres-service.yaml
+- k8s/backend.yaml
 images:
 - name: devops2022.azurecr.io/tech
   newTag: ee4a491956dd36fc7b27e3567ddad49b47f77cc4
