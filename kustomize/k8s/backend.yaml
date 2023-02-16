@@ -51,6 +51,6 @@ spec:
           path: "/html"
           backend:
             service:
-              name: backend
+              name: backend-service
               port:
                 number: 5000
