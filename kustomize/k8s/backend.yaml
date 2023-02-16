@@ -36,6 +36,7 @@ metadata:
   annotations:
     # cert-manager.io/cluster-issuer: "letsencrypt-production"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    ingressclass.kubernetes.io/is-default-class: "true"
 
 spec:
 #   tls:
