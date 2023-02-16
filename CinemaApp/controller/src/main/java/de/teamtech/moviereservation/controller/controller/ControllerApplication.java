@@ -49,26 +49,26 @@ public class ControllerApplication {
 		String password = new String(Base64.getDecoder().decode(data.get("password")));
 
 
-        try {
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://"+ System.getenv("DB_HOST") + ":" + System.getenv("DB_PORT") + "/" + System.getenv("DB_NAME");
-            Connection conn = DriverManager.getConnection(url, username, password);
+        // try {
+        //     Class.forName("org.postgresql.Driver");
+        //     String url = "jdbc:postgresql://"+ System.getenv("DB_HOST") + ":" + System.getenv("DB_PORT") + "/" + System.getenv("DB_NAME");
+        //     Connection conn = DriverManager.getConnection(url, username, password);
 
-            String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, title);
-            pstmt.setString(2, name);
-            pstmt.setInt(3, numberOfTickets);
-            pstmt.executeUpdate();
+        //     String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
+        //     PreparedStatement pstmt = conn.prepareStatement(sql);
+        //     pstmt.setString(1, title);
+        //     pstmt.setString(2, name);
+        //     pstmt.setInt(3, numberOfTickets);
+        //     pstmt.executeUpdate();
 
-            conn.close();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error: database driver not found", HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        //     conn.close();
+        // } catch (ClassNotFoundException e) {
+        //     e.printStackTrace();
+        //     return new ResponseEntity<>("Error: database driver not found", HttpStatus.INTERNAL_SERVER_ERROR);
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        //     return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
+        // }
 
         // Return a response
         return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
