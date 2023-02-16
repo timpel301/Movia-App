@@ -25,5 +25,6 @@ spec:
           - mecominds
           - teamtech-ns
           - comicbook
+          - weather-heroes-namespace
   globalOutputRefs:    
     - es-clusteroutput
