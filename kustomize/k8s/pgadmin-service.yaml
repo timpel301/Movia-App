@@ -10,5 +10,6 @@ spec:
   type: LoadBalancer
   ports:
     - port: 80
+      targetPort: 30200
       selector:
       app: pgadmin
