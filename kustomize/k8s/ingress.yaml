@@ -31,4 +31,11 @@ spec:
               name: postgres
               port: 
                 number: 30432
+        - pathType: Prefix
+          path: "/html"
+          backend:
+            service:
+              name: backend-service
+              port:
+                number: 5000
                 

@@ -29,28 +29,28 @@ spec:
   selector:
     app: backend
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: backend-ingress
-  annotations:
-    # cert-manager.io/cluster-issuer: "letsencrypt-production"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    ingressclass.kubernetes.io/is-default-class: "true"
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: backend-ingress
+#   annotations:
+#     # cert-manager.io/cluster-issuer: "letsencrypt-production"
+#     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+#     ingressclass.kubernetes.io/is-default-class: "true"
 
-spec:
-#   tls:
-#     - hosts:
-#       - tech.devops2022.de
-#       secretName: tech-prod-tls
-  rules:
-  - host: tech.devops2022.de
-    http:
-        paths:
-        - pathType: Prefix
-          path: "/html"
-          backend:
-            service:
-              name: backend-service
-              port:
-                number: 5000
+# spec:
+# #   tls:
+# #     - hosts:
+# #       - tech.devops2022.de
+# #       secretName: tech-prod-tls
+#   rules:
+#   - host: tech.devops2022.de
+#     http:
+#         paths:
+#         - pathType: Prefix
+#           path: "/html"
+#           backend:
+#             service:
+#               name: backend-service
+#               port:
+#                 number: 5000
