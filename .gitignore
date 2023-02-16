@@ -1,1 +1,2 @@
 TeamTech/kustomize/k8s/postgres-secret.yaml
+TeamTech/kustomize/k8s/pgadmin-secret.yaml
