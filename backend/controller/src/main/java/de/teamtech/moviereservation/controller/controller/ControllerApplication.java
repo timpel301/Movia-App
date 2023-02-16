@@ -30,7 +30,7 @@ import java.util.Map;
 @SpringBootApplication
 public class ControllerApplication {
 
-	@PostMapping("/booking")
+    @PostMapping("/booking")
     public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
         // Extract data from the JSON payload
         JSONObject jsonObj = new JSONObject(jsonPayload);
@@ -39,13 +39,25 @@ public class ControllerApplication {
         int numberOfTickets = jsonObj.getInt("numberOfTickets");
 
         // Insert the data into the database
-		Config config = new ConfigBuilder().build();
-		KubernetesClient client = new DefaultKubernetesClient(config);
-		Secret secret = client.secrets().inNamespace("my-namespace").withName("postgres-secret").get();
+        // ...
 
-		Map<String, String> data = secret.getData();
-		String username = new String(Base64.getDecoder().decode(data.get("username")));
-		String password = new String(Base64.getDecoder().decode(data.get("password")));
+        // Return a response
+        return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
+    }
+
+    @GetMapping("/alive")
+    public String alive() {
+        return "alive";
+    }
+
+        // Insert the data into the database
+		// Config config = new ConfigBuilder().build();
+		// KubernetesClient client = new DefaultKubernetesClient(config);
+		// Secret secret = client.secrets().inNamespace("my-namespace").withName("postgres-secret").get();
+
+		// Map<String, String> data = secret.getData();
+		// String username = new String(Base64.getDecoder().decode(data.get("username")));
+		// String password = new String(Base64.getDecoder().decode(data.get("password")));
 
 
         // try {
@@ -70,16 +82,17 @@ public class ControllerApplication {
         // }
 
         // Return a response
-        return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
-    }
-    @GetMapping("/alive")
-    public String alive(){
-        return "alive";
-    }
+    
 
-	public static void main(String[] args) {
-		SpringApplication.run(ControllerApplication.class, args);
-	}
+	// public void run() {
+    //     SpringApplication.run(ControllerApplication.class);
+    // }
+
+
+    public static void main(String[] args) {
+        SpringApplication.run(ControllerApplication.class, args);
+        
+    }
 
 }
 
