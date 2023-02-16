@@ -6,6 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.fabric8.kubernetes.api.model.Secret;
+import io.fabric8.kubernetes.client.Config;
+import io.fabric8.kubernetes.client.ConfigBuilder;
+import io.fabric8.kubernetes.client.DefaultKubernetesClient;
+import io.fabric8.kubernetes.client.ConfigBuilder;
+import io.fabric8.kubernetes.client.KubernetesClient;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.HttpStatus;
@@ -15,6 +23,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Base64;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/booking")
@@ -30,11 +40,18 @@ public class ControllerApplication {
         int numberOfTickets = jsonObj.getInt("numberOfTickets");
 
         // Insert the data into the database
+		Config config = new ConfigBuilder().build();
+		KubernetesClient client = new DefaultKubernetesClient(config);
+		Secret secret = client.secrets().inNamespace("my-namespace").withName("postgres-secret").get();
+
+		Map<String, String> data = secret.getData();
+		String username = new String(Base64.getDecoder().decode(data.get("username")));
+		String password = new String(Base64.getDecoder().decode(data.get("password")));
+
+
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5432/moviereservation";
-            String username = "your_username";
-            String password = "your_password";
+            String url = "jdbc:postgresql://"+ System.getenv("DB_HOST") + ":" + System.getenv("DB_PORT") + "/" + System.getenv("DB_NAME");
             Connection conn = DriverManager.getConnection(url, username, password);
 
             String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
