@@ -1,9 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+- k8s/ingress.yaml
 - k8s/nginx-deployment.yaml
 - k8s/nginx-service.yaml
-- k8s/ingress.yaml
+- k8s/postgres-configmap.yaml
+- k8s/postgres-deploy.yaml
+- k8s/postgres-secret.yaml
+- k8s/postgres-service.yaml
 images:
 - name: devops2022.azurecr.io/tech
-  newTag: 42fe325ccf5d480f96674eb93f0d376aa16452b0
+  newTag: ee4a491956dd36fc7b27e3567ddad49b47f77cc4

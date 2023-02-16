@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/sendFormToServer.js" defer></script>
+    <title>CineTech | Booking</title>
+</head>
+<body>
+    <header>
+        <h1>WELCOME TO CINETECH</h1>
+        <nav>
+            <ul>
+                <a href="../index.html" class="navlinks"><li>HOME</li></a>
+                <a href="booking.html" class="navlinks"><li>BOOKING</li></a>
+                <!--<a href="html/signUp.html" class="navlinks"><li>LOGIN</li></a>-->
+            </ul>
+        </nav>
+    </header>
+
+    <main id="bookingMain">
+        <form>
+            <h2 id="movieBookingHeader">Movie Booking Form</h2>
+            <div class="form-group">
+                <label for="movies">Select a movie:</label>
+                <select id="movies" name="movies">
+                <option value="movie1">Avatar 2 - The Way Of Water</option>
+                <option value="movie2">Everything, Everwhere, All At Once</option>
+                <option value="movie3">Top Gun - Maverick</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tickets">Number of tickets:</label>
+                <input type="number" id="tickets" name="tickets" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
+    </main>
+
+    <footer>
+        <p id="footerText">T.E.C.H. is an akronym of the team members:<br> <b>T</b>im, <b>E</b>slam, <b>C</b>hris, <b>H</b>alim</p>
+    </footer>
+</body>
+</html>
