@@ -12,4 +12,4 @@ resources:
 - k8s/backend.yaml
 images:
 - name: devops2022.azurecr.io/tech
-  newTag: c26cc2039e4a902b6d90f986e30a1cc3486d857f
+  newTag: c8b08da6ee2c106849e0c0b743ea8dd9462e9036
