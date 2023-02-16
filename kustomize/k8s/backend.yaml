@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: devops2022.azurecr.io/teamtechbackend:v0.1
+        image: devops2022.azurecr.io/teamtechbackend:v0.1.2
         ports:
         - containerPort: 5000
 ---
@@ -36,6 +36,7 @@ metadata:
   annotations:
     # cert-manager.io/cluster-issuer: "letsencrypt-production"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    ingressclass.kubernetes.io/is-default-class: "true"
 
 spec:
 #   tls:
@@ -50,6 +51,6 @@ spec:
           path: "/html"
           backend:
             service:
-              name: backend
+              name: backend-service
               port:
                 number: 5000
