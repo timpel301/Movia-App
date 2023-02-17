@@ -21,7 +21,7 @@ pipeline {
                         sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
                         sh('helm repo add stable https://charts.helm.sh/stable')
                         sh('helm repo update')
-                        sh('helm install prometheus prometheus-community/kube-prometheus-stack -n teamtech-ns')
+                        sh('helm upgrade --install prometheus prometheus-community/kube-prometheus-stack -n teamtech-ns')
                     }
                 }
             }
