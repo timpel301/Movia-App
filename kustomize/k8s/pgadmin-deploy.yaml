@@ -16,8 +16,8 @@ spec:
         - name: pgadmin4
           image: dpage/pgadmin4
           env:
-            - name: PGADMIN_DEFAULT_USER
-              value: "alphaone"
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: "eabdien@web.de"
             - name: PGADMIN_DEFAULT_PASSWORD
               valueFrom:
                 secretKeyRef:
