@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
       - tech.devops2022.de
-      - kibana.weatherapp.devops2022.de
+      # - kibana.weatherapp.devops2022.de
       secretName: tech-prod-tls
   rules:
   - host: tech.devops2022.de
@@ -45,15 +45,15 @@ spec:
               name: backend-service
               port:
                 number: 5000
-  - host: kibana.tech.devops2022.de
-    http:
-        paths:
-        - pathType: Prefix
-          path: "/"
-          backend:
-            service:
-              name: tech-kibana-kb-http 
-              port:
-                number: 5601
+  # - host: kibana.tech.devops2022.de
+  #   http:
+  #       paths:
+  #       - pathType: Prefix
+  #         path: "/"
+  #         backend:
+  #           service:
+  #             name: tech-kibana-kb-http 
+  #             port:
+  #               number: 5601
         
                 
