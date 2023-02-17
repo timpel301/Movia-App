@@ -13,6 +13,6 @@ resources:
 - k8s/kibana.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: f0a9f89ded3598f0b89554a42f807af8dba08a78
+  newTag: b1758f9b0997b04221a9787b17c2fa7b6cff6f86
 - name: devops2022.azurecr.io/tech
-  newTag: f0a9f89ded3598f0b89554a42f807af8dba08a78
+  newTag: b1758f9b0997b04221a9787b17c2fa7b6cff6f86
