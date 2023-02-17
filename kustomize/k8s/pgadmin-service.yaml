@@ -6,7 +6,7 @@ metadata:
     app: pgadmin
 spec:
   spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 80
   selector:
