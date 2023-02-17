@@ -10,10 +10,8 @@ pipeline {
                 sh "echo Git commit hash: $GIT_COMMIT"
                 sh "docker build . -t devops2022.azurecr.io/tech:$GIT_COMMIT"
                 sh "docker push devops2022.azurecr.io/tech:$GIT_COMMIT"
-                sh "cd backend"
-                sh "docker build -t devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT ."
+                sh "docker build -t devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT ./backend"
                 sh "docker push devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT"
-                sh "cd .."
             }
         }
         //stage('Deploy nginx on K8S') {
