@@ -12,14 +12,12 @@ spec:
     service:
       metadata:
         name: teamtech-kibana
-        annotations:
-          nginx.ingress.kubernetes.io/ssl-redirect: "true"
       spec:
         type: LoadBalancer
         ports:
         - port: 5601
           targetPort: 5601
-    tls:
-      selfSignedCertificate:
-        subjectAltNames:
-          - dns: kibana.tech.devops2022.de
+    # tls:
+    #   selfSignedCertificate:
+    #     subjectAltNames:
+    #       - dns: kibana.tech.devops2022.de
