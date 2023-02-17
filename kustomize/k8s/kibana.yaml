@@ -18,7 +18,6 @@ spec:
         type: LoadBalancer
         ports:
         - port: 5601
-          protocol: TCP
           targetPort: 5601
     # tls:
     #   selfSignedCertificate:
