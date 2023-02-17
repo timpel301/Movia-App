@@ -18,7 +18,7 @@ pipeline {
             agent {
                 docker {
                     image 'alpine/helm:3.11.1'
-                    args '--entrypoint=""'
+                    args '--entrypoint="" --user=root'
                     label 'helm'
                     reuseNode true
                     user 'root'
