@@ -17,7 +17,7 @@ pipeline {
         stage('HELM ADD REPO & INSTALL CHART') {
             steps{
                 script {
-                    docker.image('alpine/helm:3.7.0').inside('--user root'){
+                    docker.image('alpine/helm:3.7.0').inside("--user root --entrypoint ''"){
                 
                         sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
                         sh('helm repo add stable https://kubernetes-charts.storage.googleapis.com/')
