@@ -15,6 +15,9 @@ pipeline {
             }
         }
         stage('HELM ADD REPO & INSTALL CHART') {
+            environment {
+                KUBECONFIG = credentials('k8s_config')
+            }
             steps{
                 script {
                     docker.image('alpine/helm:3.7.0').inside("--user root --entrypoint ''"){
