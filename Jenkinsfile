@@ -14,6 +14,19 @@ pipeline {
                 sh "docker push devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT"
             }
         }
+        stage('HELM ADD REPO & INSTALL CHART') {
+            agent {
+                docker {
+                    image: 'bitnami/helm:latest'
+                }
+            }
+            steps{
+                sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
+                sh('helm repo add stable https://kubernetes-charts.storage.googleapis.com/')
+                sh('helm repo update')
+                sh('helm install prometheus prometheus-community/kube-prometheus-stack')
+            }
+        }
         //stage('Deploy nginx on K8S') {
         //    agent {
         //        docker {
