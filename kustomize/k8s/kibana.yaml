@@ -14,7 +14,6 @@ spec:
         name: teamtech-kibana
         annotations:
           nginx.ingress.kubernetes.io/ssl-redirect: "true"
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
       spec:
         type: LoadBalancer
         ports:
