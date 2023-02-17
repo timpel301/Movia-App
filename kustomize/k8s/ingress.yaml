@@ -11,6 +11,7 @@ spec:
   tls:
     - hosts:
       - tech.devops2022.de
+      - kibana.weatherapp.devops2022.de
       secretName: tech-prod-tls
   rules:
   - host: tech.devops2022.de
