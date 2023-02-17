@@ -51,35 +51,35 @@ public class ControllerApplication {
 		String password = new String(Base64.getDecoder().decode(data.get("password")));
 
 
-        try {
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://20.4.203.253:5432/tech-db";
-            Connection conn = DriverManager.getConnection(url, username, password);
+        // try {
+        //     Class.forName("org.postgresql.Driver");
+        //     String url = "jdbc:postgresql://20.4.203.253:5432/tech-db";
+        //     Connection conn = DriverManager.getConnection(url, username, password);
 
-            DatabaseMetaData dbmd = conn.getMetaData();
-            ResultSet rs = dbmd.getTables(null, null, "bookings", null);
-            if (!rs.next()) {
-            // Table does not exist, create it
-            Statement stmt = conn.createStatement();
-            String sql = "CREATE TABLE bookings (id SERIAL PRIMARY KEY, title VARCHAR(255), name VARCHAR(255), number_of_tickets INTEGER)";
-            stmt.executeUpdate(sql);
-            }
+        //     DatabaseMetaData dbmd = conn.getMetaData();
+        //     ResultSet rs = dbmd.getTables(null, null, "bookings", null);
+        //     if (!rs.next()) {
+        //     // Table does not exist, create it
+        //     Statement stmt = conn.createStatement();
+        //     String sql = "CREATE TABLE bookings (id SERIAL PRIMARY KEY, title VARCHAR(255), name VARCHAR(255), number_of_tickets INTEGER)";
+        //     stmt.executeUpdate(sql);
+        //     }
 
-            String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, title);
-            pstmt.setString(2, name);
-            pstmt.setInt(3, numberOfTickets);
-            pstmt.executeUpdate();
+        //     String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
+        //     PreparedStatement pstmt = conn.prepareStatement(sql);
+        //     pstmt.setString(1, title);
+        //     pstmt.setString(2, name);
+        //     pstmt.setInt(3, numberOfTickets);
+        //     pstmt.executeUpdate();
 
-            conn.close();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error: database driver not found", HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        //     conn.close();
+        // } catch (ClassNotFoundException e) {
+        //     e.printStackTrace();
+        //     return new ResponseEntity<>("Error: database driver not found", HttpStatus.INTERNAL_SERVER_ERROR);
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        //     return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
+        // }
 
 
         // Return a response
