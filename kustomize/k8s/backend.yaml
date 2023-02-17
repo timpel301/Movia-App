@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: devops2022.azurecr.io/teamtechbackend:v0.1.15
+        image: devops2022.azurecr.io/teamtechbackend:v0.1.18
         ports:
         - containerPort: 8080
 ---
