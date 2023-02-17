@@ -6,12 +6,11 @@ resources:
 - k8s/nginx-service.yaml
 - k8s/postgres-configmap.yaml
 - k8s/postgres-deploy.yaml
-- k8s/postgres-secret.yaml
 - k8s/postgres-service.yaml
-- k8s/pgadmin-secret.yaml
 - k8s/pgadmin-deploy.yaml
 - k8s/pgadmin-service.yaml
 - k8s/backend.yaml
+- k8s/kibana.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
   newTag: 70f4b0613b2c79d58b2f87a78ef7af37c265e7e7
