@@ -10,6 +10,10 @@ pipeline {
                 sh "echo Git commit hash: $GIT_COMMIT"
                 sh "docker build . -t devops2022.azurecr.io/tech:$GIT_COMMIT"
                 sh "docker push devops2022.azurecr.io/tech:$GIT_COMMIT"
+                sh "cd backend"
+                sh "docker build -t devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT ."
+                sh "docker push devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT"
+                sh "cd .."
             }
         }
         //stage('Deploy nginx on K8S') {
@@ -46,10 +50,11 @@ pipeline {
                     sh("git fetch && git merge -X theirs -m 'merge'")
                     //sh("git status")
                     sh("cd ./kustomize && kustomize edit set image devops2022.azurecr.io/tech:$GIT_COMMIT && cd ..")
+                    sh("cd ./kustomize && kustomize edit set image devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT && cd ..")
                     //sh("git status")
                     sh("git add kustomize/kustomization.yaml")
                     //sh("git status")
-                    sh("git commit -m 'modified nginx with $GIT_COMMIT'")
+                    sh("git commit -m 'modified frontend and backend with $GIT_COMMIT'")
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
                 }
             }

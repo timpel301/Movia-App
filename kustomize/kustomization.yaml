@@ -15,3 +15,5 @@ resources:
 images:
 - name: devops2022.azurecr.io/tech
   newTag: 9913af8316893656c9dc0fa96ca23c6813c156e5
+- name: devops2022.azurecr.io/teamtechbackend
+  newTag: latest
