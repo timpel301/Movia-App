@@ -17,7 +17,11 @@ pipeline {
         stage('HELM ADD REPO & INSTALL CHART') {
             agent {
                 docker {
-                    image 'bitnami/helm:3.7.0'
+                    image 'alpine/helm:3.11.1'
+                    args '--entrypoint=""'
+                    label 'helm'
+                    reuseNode true
+                    user 'root'
                 }
             }
             steps{
