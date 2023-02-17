@@ -3,7 +3,7 @@ kind: Kibana
 metadata:
   name: tech-kibana
 spec:
-  version: 7.10.0
+  version: 8.6.2
   count: 1
   elasticsearchRef:
     namespace: logging
