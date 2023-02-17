@@ -18,6 +18,7 @@ pipeline {
             agent {
                 docker {
                     image 'alpine/helm:3.11.1'
+                    args '--entrypoint=""'
                 }
             }
             steps{
