@@ -35,7 +35,7 @@ public class ControllerApplication {
         // database connection
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://20.4.203.253:5432/postgres";
+            String url = "jdbc:postgresql://20.23.133.107:5432/postgres";
             Connection conn = DriverManager.getConnection(url, "root", "mypassword");
 
             // database table
