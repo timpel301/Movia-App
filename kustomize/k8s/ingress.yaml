@@ -37,4 +37,11 @@ spec:
               name: backend-service
               port:
                 number: 5000
+        - pathType: Prefix
+          path: "/alive"
+          backend:
+            service:
+              name: backend-service
+              port:
+                number: 5000
                 
