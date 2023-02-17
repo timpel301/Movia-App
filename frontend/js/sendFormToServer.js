@@ -8,13 +8,7 @@ form.addEventListener('submit', (event) => {
   // convert form data to JSON
   const jsonData = {};
   formData.forEach((value, key) => {
-    if (key === 'title') {
-      jsonData.title = value;
-    } else if (key === 'name') {
-      jsonData.name = value;
-    } else if (key === 'numberOfTickets') {
-      jsonData.numberOfTickets = value;
-    }
+    jsonData[key] = value;
   });
 
   // send the data to the server
