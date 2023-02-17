@@ -21,6 +21,7 @@ pipeline {
                 }
             }
             steps{
+                sh 'docker login devops2022.azurecr.io -u ${ACRCreds_USR} -p ${ACRCreds_PSW}'
                 sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
                 sh('helm repo add stable https://kubernetes-charts.storage.googleapis.com/')
                 sh('helm repo update')
