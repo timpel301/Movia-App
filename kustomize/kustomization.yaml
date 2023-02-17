@@ -13,7 +13,7 @@ resources:
 - k8s/pgadmin-service.yaml
 - k8s/backend.yaml
 images:
-- name: devops2022.azurecr.io/tech
-  newTag: 0a01a4259ee9e7d93af2a07765866a902ce65c72
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: latest
+  newTag: cc33f1e95be556226bb2519663d2bda011a7348f
+- name: devops2022.azurecr.io/tech
+  newTag: cc33f1e95be556226bb2519663d2bda011a7348f
