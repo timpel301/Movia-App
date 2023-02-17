@@ -19,7 +19,7 @@ spec:
         ports:
         - port: 5601
           targetPort: 5601
-    # tls:
-    #   selfSignedCertificate:
-    #     subjectAltNames:
-    #       - dns: kibana.tech.devops2022.de
+    tls:
+      selfSignedCertificate:
+        subjectAltNames:
+          - dns: kibana.tech.devops2022.de

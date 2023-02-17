@@ -24,13 +24,13 @@ spec:
               name: hello-world
               port:
                 number: 80
-        - pathType: Prefix
-          path: "/postgres"
-          backend:
-            service:
-              name: postgres
-              port: 
-                number: 30432
+        # - pathType: Prefix
+        #   path: "/postgres"
+        #   backend:
+        #     service:
+        #       name: postgres
+        #       port: 
+        #         number: 30432
         - pathType: Prefix
           path: "/booking"
           backend:
@@ -45,15 +45,15 @@ spec:
               name: backend-service
               port:
                 number: 5000
-  - host: kibana.tech.devops2022.de
-    http:
-        paths:
-        - pathType: Prefix
-          path: "/"
-          backend:
-            service:
-              name: tech-kibana-kb-http 
-              port:
-                number: 5601
+  # - host: kibana.tech.devops2022.de
+  #   http:
+  #       paths:
+  #       - pathType: Prefix
+  #         path: "/"
+  #         backend:
+  #           service:
+  #             name: tech-kibana-kb-http 
+  #             port:
+  #               number: 5601
         
                 
