@@ -4,7 +4,7 @@ pipeline {
         ACRCreds = credentials('acr_creds')
     }
     stages {
-        stage('ACR LOGIN + PUSH') {
+        stage('ACR LOGIN & PUSH') {
             steps {
                 sh 'docker login devops2022.azurecr.io -u ${ACRCreds_USR} -p ${ACRCreds_PSW}'
                 sh "echo Git commit hash: $GIT_COMMIT"
@@ -42,12 +42,10 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'b1add8da-78ed-4990-a20b-8f166c709c9c', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]){
                     sh("git config user.email 'jenkins@jenkins.com'")
                     sh("git config user.name 'jenkins'")
-                    //sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/argocd-team4.git chris")
                     sh("git checkout main")
-                    sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
+                    sh("git fetch && git merge -X theirs -m 'merge'")
                     //sh("git status")
                     sh("cd ./kustomize && kustomize edit set image devops2022.azurecr.io/tech:$GIT_COMMIT && cd ..")
-                    sh("git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
                     //sh("git status")
                     sh("git add kustomize/kustomization.yaml")
                     //sh("git status")

@@ -10,40 +10,41 @@
 </head>
 <body>
     <header>
-        <h1>WELCOME TO CINETECH</h1>
+        <h2>MOVIE BOOKING FORM</h2>
         <nav>
             <ul>
                 <a href="../index.html" class="navlinks"><li>HOME</li></a>
-                <a href="booking.html" class="navlinks"><li>BOOKING</li></a>
+                <a href="" class="navlinks"><li>BOOKING</li></a>
                 <!--<a href="html/signUp.html" class="navlinks"><li>LOGIN</li></a>-->
             </ul>
         </nav>
+        <h1>CINETECH<br>LOGO</h1>
     </header>
 
     <main id="bookingMain">
         <form>
-            <h2 id="movieBookingHeader">Movie Booking Form</h2>
             <div class="form-group">
-                <label for="movies">Select a movie:</label>
-                <select id="movies" name="movies">
-                <option value="movie1">Avatar 2 - The Way Of Water</option>
-                <option value="movie2">Everything, Everwhere, All At Once</option>
-                <option value="movie3">Top Gun - Maverick</option>
+                <label for="title">SELECT A MOVIE:</label>
+                <select id="title" name="title">
+                <option value="Avatar_2,The_Way_Of_Water">AVATAR 2 - THE WAY OF WATER</option>
+                <option value="Everything,Everywhere,All_At_Once">EVERYTHING, EVERYWHERE, ALL AT ONCE</option>
+                <option value="Top_Gun,Maverick">TOP GUN - MAVERICK</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+            <div class="form-group form-group-2">
+                <div class="form-name">
+                    <label for="name">NAME:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-name">
+                    <label for="numberOfTickets">NUMBER OF TICKETS:</label>
+                    <input type="number" id="numberOfTickets" name="numberOfTickets" min="1" max="15" required>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="tickets">Number of tickets:</label>
-                <input type="number" id="tickets" name="tickets" required>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Submit">
+                <input type="submit" value="SUBMIT">
             </div>
         </form>
 
