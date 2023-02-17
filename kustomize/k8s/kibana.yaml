@@ -22,7 +22,6 @@ spec:
           protocol: TCP
           targetPort: 5601
     tls:
-    - hosts:
-      - kibana.weatherapp.devops2022.de
-      secretName: tech-prod-tls
-
+      selfSignedCertificate:
+        subjectAltNames:
+          - dns: kibana.tech.devops2022.de
