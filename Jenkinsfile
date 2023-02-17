@@ -19,10 +19,10 @@ pipeline {
                 script {
                     docker.image('alpine/helm:3.7.0').inside('--user root'){
                 
-                    sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
-                    sh('helm repo add stable https://kubernetes-charts.storage.googleapis.com/')
-                    sh('helm repo update')
-                    sh('helm install prometheus prometheus-community/kube-prometheus-stack')
+                        sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
+                        sh('helm repo add stable https://kubernetes-charts.storage.googleapis.com/')
+                        sh('helm repo update')
+                        sh('helm install prometheus prometheus-community/kube-prometheus-stack')
                     }
                 }
             }
