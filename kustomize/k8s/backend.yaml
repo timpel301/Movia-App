@@ -17,6 +17,9 @@ spec:
         image: devops2022.azurecr.io/teamtechbackend:v0.1.18
         ports:
         - containerPort: 8080
+        envFrom:
+        - ConfigMapRef:
+          name: backend-config
 ---
 apiVersion: v1
 kind: Service
