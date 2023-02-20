@@ -17,6 +17,6 @@ resources:
 - k8s/prometheus/prometheus-service.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: ad224f280f330f62c93324cf5a60dd98c5487d02
+  newTag: 45ff1aeca84dde9940b38dba71366bca8281dadc
 - name: devops2022.azurecr.io/tech
-  newTag: ad224f280f330f62c93324cf5a60dd98c5487d02
+  newTag: 45ff1aeca84dde9940b38dba71366bca8281dadc
