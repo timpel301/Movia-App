@@ -32,42 +32,66 @@ public class ControllerApplication {
         String name = jsonObj.getString("name");
         int numberOfTickets = jsonObj.getInt("numberOfTickets");
 
-        // database connection
+        Connection conn = null;
+        Statement stmt = null;
+        PreparedStatement pstmt = null;
+
+        // Database connection
         try {
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://20.23.133.107:5432/postgres";
-            Connection conn = DriverManager.getConnection(url, "root", "mypassword");
+            conn = DriverManager.getConnection(url, "root", "mypassword");
 
             // database table
             DatabaseMetaData dbmd = conn.getMetaData();
             ResultSet rs = dbmd.getTables(null, null, "bookings", null);
             if (!rs.next()) {
             // Table does not exist, create it
-            Statement stmt = conn.createStatement();
+            stmt = conn.createStatement();
             String sql = "CREATE TABLE bookings (id SERIAL PRIMARY KEY, title VARCHAR(255), name VARCHAR(255), number_of_tickets INTEGER)";
             stmt.executeUpdate(sql);
             }
 
             // inpute data into database
             String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, title);
             pstmt.setString(2, name);
             pstmt.setInt(3, numberOfTickets);
             pstmt.executeUpdate();
 
-            // close connection
-            conn.close();
+           // Return a response
+        return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             return new ResponseEntity<>("Error: database driver not found", HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (SQLException e) {
             e.printStackTrace();
             return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-        // Return a response
-        return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (stmt != null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
     }
 
     // dummy get request
