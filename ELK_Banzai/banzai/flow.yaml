@@ -22,7 +22,6 @@ spec:
         # labels:          
         #   app: nginx
         namespaces:          
-          - mecominds
           - teamtech-ns
           - comicbook
           - weather-heroes-namespace
