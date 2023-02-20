@@ -15,6 +15,9 @@ resources:
 - k8s/prometheus/prom-deployment.yaml
 - k8s/prometheus/prometheus-config.yaml
 - k8s/prometheus/prometheus-service.yaml
+- k8s/Grafana/grafana-datasource-config.yaml
+- k8s/Grafana/grafana-deployment.yaml
+- k8s/Grafana/grafana-service.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
   newTag: 58c0880bfdc7308a3445ea756c506e76a4d1c38d
