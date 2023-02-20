@@ -14,21 +14,21 @@ pipeline {
                 sh "docker push devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT"
             }
         }
-        stage('HELM ADD REPO & INSTALL CHART') {
-            environment {
-                KUBECONFIG = credentials('k8s_config')
-            }
-            steps{
-                script {
-                    docker.image('alpine/helm:3.7.0').inside("--user root --entrypoint ''"){
-                        sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
-                        sh('helm repo add stable https://charts.helm.sh/stable')
-                        sh('helm repo update')
-                        sh('helm upgrade --install prometheus prometheus-community/kube-prometheus-stack -n teamtech-ns')
-                    }
-                }
-            }
-        }
+        //stage('HELM ADD REPO & INSTALL CHART') {
+        //    environment {
+        //        KUBECONFIG = credentials('k8s_config')
+        //    }
+        //    steps{
+        //        script {
+        //            docker.image('alpine/helm:3.7.0').inside("--user root --entrypoint ''"){
+        //                sh('helm repo add prometheus-community https://prometheus-community.github.io/helm-charts')
+        //                sh('helm repo add stable https://charts.helm.sh/stable')
+        //                sh('helm repo update')
+        //                sh('helm upgrade --install prometheus prometheus-community/kube-prometheus-stack -n teamtech-ns')
+        //            }
+        //        }
+        //    }
+        //}
         //stage('Deploy nginx on K8S') {
         //    agent {
         //        docker {
