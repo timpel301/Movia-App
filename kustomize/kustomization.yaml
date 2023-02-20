@@ -20,6 +20,6 @@ resources:
 - k8s/Grafana/grafana-service.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: caa74a82b5bf5921206aa665f14ddd6d76c868bc
+  newTag: c823ed52bc08cf61371aabe07d674f65219abead
 - name: devops2022.azurecr.io/tech
-  newTag: caa74a82b5bf5921206aa665f14ddd6d76c868bc
+  newTag: c823ed52bc08cf61371aabe07d674f65219abead
