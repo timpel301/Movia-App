@@ -15,6 +15,6 @@ resources:
 - k8s/kube-prometheus-stack
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: 57afb5ac1f54dc89175d9d1a72757a589a8a96df
+  newTag: 009930d5389a61378763b73ecddbae087bfbc739
 - name: devops2022.azurecr.io/tech
-  newTag: 57afb5ac1f54dc89175d9d1a72757a589a8a96df
+  newTag: 009930d5389a61378763b73ecddbae087bfbc739
