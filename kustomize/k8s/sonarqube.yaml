@@ -60,8 +60,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-      port: 9000
-      targetPort: 9000
+    port: 9000
+    targetPort: 9000
   selector:
     app: sonarqube
 ---
@@ -115,8 +115,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-      port: 5432
-      targetPort: 5433
+    port: 5432
+    targetPort: 5433
   selector:
     app: sonarqube-database
 
