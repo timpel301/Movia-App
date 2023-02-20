@@ -3,46 +3,48 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: sonarqube
+    app: sonarqube
   name: sonarqube
 spec:
   type: LoadBalancer
   ports:
-    - name: "9000"
       port: 9000
       targetPort: 9000
   selector:
-    io.kompose.service: sonarqube
+    app: sonarqube
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: sonarqube-database
+    app: sonarqube-database
   name: sonarqube-database
 spec:
   type: LoadBalancer
   ports:
-    - name: "5432"
       port: 5432
-      targetPort: 5432
+      targetPort: 5433
   selector:
-    io.kompose.service: sonarqube-database
+    app: sonarqube-database
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: sonarqube
+    app: sonarqube
   name: sonarqube
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: sonarqube
-      labels:
-        io.kompose.service: sonarqube
+      app: sonarqube
+      # labels:
+      #   io.kompose.service: sonarqube
+    template:   
+      metadata:
+        labels:
+          app: sonarqube
     spec:
       containers:
         - env:
@@ -56,7 +58,6 @@ spec:
           name: sonarqube
           ports:
             - containerPort: 9000
-          resources: {}
           volumeMounts:
             - mountPath: /opt/sonarqube/conf
               name: sonarqube-conf
@@ -66,7 +67,6 @@ spec:
               name: sonarqube-extensions
             - mountPath: /opt/sonarqube/lib/bundled-plugins
               name: sonarqube-bundled-plugins
-      restartPolicy: Always
       volumes:
         - name: sonarqube-conf
           persistentVolumeClaim:
@@ -86,7 +86,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: sonarqube-conf
+    app: sonarqube-conf
   name: sonarqube-conf
 spec:
   # accessModes:
@@ -94,14 +94,13 @@ spec:
   resources:
     requests:
       storage: 100Mi
-status: {}
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: sonarqube-data
+    app: sonarqube-data
   name: sonarqube-data
 spec:
   # accessModes:
@@ -109,14 +108,13 @@ spec:
   resources:
     requests:
       storage: 100Mi
-status: {}
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: sonarqube-extensions
+    app: sonarqube-extensions
   name: sonarqube-extensions
 spec:
   # accessModes:
@@ -124,14 +122,13 @@ spec:
   resources:
     requests:
       storage: 100Mi
-status: {}
 
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: sonarqube-bundled-plugins
+    app: sonarqube-bundled-plugins
   name: sonarqube-bundled-plugins
 spec:
   # accessModes:
@@ -139,7 +136,6 @@ spec:
   resources:
     requests:
       storage: 100Mi
-status: {}
 
 # ---
 # apiVersion: networking.k8s.io/v1
@@ -161,18 +157,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: sonarqube-database
+    app: sonarqube-database
   name: sonarqube-database
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: sonarqube-database
+      app: sonarqube-database
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        io.kompose.service: sonarqube-database
+        app: sonarqube-database
     spec:
       containers:
         - env:
@@ -186,13 +181,11 @@ spec:
           name: sonarqube-database
           ports:
             - containerPort: 5432
-          resources: {}
           volumeMounts:
             - mountPath: /var/lib/postgresql
               name: sonarqube-database
             - mountPath: /var/lib/postgresql/data
               name: sonarqube-database-data
-      restartPolicy: Always
       volumes:
         - name: sonarqube-database
           persistentVolumeClaim:
