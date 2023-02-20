@@ -40,7 +40,7 @@ spec:
     matchLabels:
       app: sonarqube
       # labels:
-      #   io.kompose.service: sonarqube
+      #   app: sonarqube
     template:   
       metadata:
         labels:
@@ -199,7 +199,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: sonarqube-database
+    app: sonarqube-database
   name: sonarqube-database
 spec:
   # accessModes:
@@ -213,7 +213,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    io.kompose.service: sonarqube-database-data
+    app: sonarqube-database-data
   name: sonarqube-database-data
 spec:
   # accessModes:
