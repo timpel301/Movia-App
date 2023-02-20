@@ -14,6 +14,6 @@ resources:
 - k8s/sonarqube-1.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: e66459412697eec942968506733e93aa67156e5b
+  newTag: 61afaa7c40f4515375946c75176068bc8cc225f6
 - name: devops2022.azurecr.io/tech
-  newTag: e66459412697eec942968506733e93aa67156e5b
+  newTag: 61afaa7c40f4515375946c75176068bc8cc225f6
