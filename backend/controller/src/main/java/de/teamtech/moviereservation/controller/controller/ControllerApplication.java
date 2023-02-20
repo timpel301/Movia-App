@@ -25,74 +25,44 @@ import java.sql.Statement;
 public class ControllerApplication {
 
     @PostMapping("/booking")
-    public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
+public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
+    try (Connection conn = DriverManager.getConnection("jdbc:postgresql://20.23.133.107:5432/postgres", "root", "mypassword")) {
         // Extract data from the JSON payload
         JSONObject jsonObj = new JSONObject(jsonPayload);
         String title = jsonObj.getString("title");
         String name = jsonObj.getString("name");
         int numberOfTickets = jsonObj.getInt("numberOfTickets");
 
-        Connection conn = null;
-        Statement stmt = null;
-        PreparedStatement pstmt = null;
-
-        // Database connection
-        try {
-            Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://20.23.133.107:5432/postgres";
-            conn = DriverManager.getConnection(url, "root", "mypassword");
-
-            // database table
-            DatabaseMetaData dbmd = conn.getMetaData();
-            ResultSet rs = dbmd.getTables(null, null, "bookings", null);
-            if (!rs.next()) {
+        // database table
+        DatabaseMetaData dbmd = conn.getMetaData();
+        ResultSet rs = dbmd.getTables(null, null, "bookings", null);
+        if (!rs.next()) {
             // Table does not exist, create it
-            stmt = conn.createStatement();
-            String sql = "CREATE TABLE bookings (id SERIAL PRIMARY KEY, title VARCHAR(255), name VARCHAR(255), number_of_tickets INTEGER)";
-            stmt.executeUpdate(sql);
+            try (Statement stmt = conn.createStatement()) {
+                String sql = "CREATE TABLE bookings (id SERIAL PRIMARY KEY, title VARCHAR(255), name VARCHAR(255), number_of_tickets INTEGER)";
+                stmt.executeUpdate(sql);
             }
+        }
 
-            // inpute data into database
-            String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
-            pstmt = conn.prepareStatement(sql);
+        // input data into database
+        String sql = "INSERT INTO bookings (title, name, number_of_tickets) VALUES (?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, title);
             pstmt.setString(2, name);
             pstmt.setInt(3, numberOfTickets);
             pstmt.executeUpdate();
+        }
 
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error: database driver not found", HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
-        }finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (pstmt != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (stmt != null) {
-                    try {
-                        conn.close();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
         // Return a response
         return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
+    } catch (Exception e) {
+        return new ResponseEntity<>("Error: JSON parsing error", HttpStatus.BAD_REQUEST);
     }
+}
+
 
     // dummy get request
     @GetMapping("/alive")
