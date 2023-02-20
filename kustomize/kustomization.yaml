@@ -15,6 +15,6 @@ resources:
 - k8s/prometheus/prom-deployment.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: 5c215956bf7cf66195db3523d980b3cdffa17f1a
+  newTag: b5cb798c9e723876a0c929d0af8fce50fdc7857e
 - name: devops2022.azurecr.io/tech
-  newTag: 5c215956bf7cf66195db3523d980b3cdffa17f1a
+  newTag: b5cb798c9e723876a0c929d0af8fce50fdc7857e
