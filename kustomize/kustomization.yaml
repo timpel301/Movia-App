@@ -15,6 +15,6 @@ resources:
 - ../kube-prometheus-stack/Chart.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: a93c02efbcef46e59d44bab8f0cceaa9e5063b76
+  newTag: 90c5bd85bcd330599d3e077ff1b15515e0565ce3
 - name: devops2022.azurecr.io/tech
-  newTag: a93c02efbcef46e59d44bab8f0cceaa9e5063b76
+  newTag: 90c5bd85bcd330599d3e077ff1b15515e0565ce3
