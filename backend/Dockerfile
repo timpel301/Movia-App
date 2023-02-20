@@ -9,7 +9,8 @@ FROM maven:3.8.7-openjdk-18-slim AS build-env
 COPY ./controller/pom.xml ./pom.xml
 RUN mvn dependency:go-offline -B
 COPY ./controller/src ./src
-ENV POSTGRES_PWD="" POSTGRES_USR=""
+ENV POSTGRES_PWD=secret \
+    POSTGRES_USR=root
 RUN mvn package
 
 FROM eclipse-temurin:19.0.2_7-jre-alpine
