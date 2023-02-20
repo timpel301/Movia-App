@@ -60,8 +60,6 @@ public class ControllerApplication {
             pstmt.setInt(3, numberOfTickets);
             pstmt.executeUpdate();
 
-           // Return a response
-        return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -92,6 +90,8 @@ public class ControllerApplication {
                     }
                 }
             }
+        // Return a response
+        return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
     }
 
     // dummy get request
