@@ -11,4 +11,4 @@ data:
     scrape_configs:
     - job_name: 'tech.devops2022.de'
       static_configs:
-        - targets: ['tech.devops2022.de']
+        - targets: ['tech.devops2022.de:8080/actuator/prometheus']
