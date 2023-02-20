@@ -4,6 +4,7 @@ resources:
 - k8s/ingress.yaml
 - k8s/nginx-deployment.yaml
 - k8s/nginx-service.yaml
+- k8s/prom-service.yaml
 - k8s/postgres-configmap.yaml
 - k8s/postgres-deploy.yaml
 - k8s/postgres-service.yaml
