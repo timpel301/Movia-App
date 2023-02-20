@@ -4,7 +4,7 @@ resources:
 - k8s/ingress.yaml
 - k8s/nginx-deployment.yaml
 - k8s/nginx-service.yaml
-- k8s/DB/postgres-configmap.yaml 
+- k8s/DB/postgres-configmap.yaml
 - k8s/DB/postgres-deploy.yaml
 - k8s/DB/postgres-service.yaml
 - k8s/DB/pgadmin-deploy.yaml
@@ -17,6 +17,6 @@ resources:
 - k8s/prometheus/prometheus-service.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: 07051451ba219aeb467d2814249bbfe75bce18a5
+  newTag: 58c0880bfdc7308a3445ea756c506e76a4d1c38d
 - name: devops2022.azurecr.io/tech
-  newTag: 07051451ba219aeb467d2814249bbfe75bce18a5
+  newTag: 58c0880bfdc7308a3445ea756c506e76a4d1c38d
