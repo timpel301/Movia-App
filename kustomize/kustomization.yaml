@@ -12,8 +12,8 @@ resources:
 - k8s/backend.yaml
 - k8s/kibana.yaml
 - k8s/sonarqube-1.yaml
-- prometheus/prom-deployment.yaml
-- prometheus/prometheus.yaml 
+- ../prometheus/prom-deployment.yaml
+- ../prometheus/prometheus.yaml 
 images:
 - name: devops2022.azurecr.io/teamtechbackend
   newTag: 54e3f17be10b91c9eb6ca5f2e4110043cfea17ae
