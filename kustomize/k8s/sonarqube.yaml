@@ -52,7 +52,7 @@ spec:
               value: jdbc:postgresql://sonarqube-database:5432/sonarqube
             - name: SONARQUBE_JDBC_USERNAME
               value: sonarqube
-          image: sonarqube
+          image: sonarqube:latest
           name: sonarqube
           ports:
             - containerPort: 9000
