@@ -4,6 +4,24 @@ pipeline {
         ACRCreds = credentials('acr_creds')
     }
     stages {
+
+         stage('Scan'){
+            agent{
+                docker {
+                    image 'maven:3.8.7-openjdk-18-slim'
+                    args "-e 'HTTP_PROXY=http://20.93.255.213:9000'"
+                    
+                }
+            }
+            steps {
+                withSonarQubeEnv(installationName: 'sq1') {
+                    sh 'mvn dependency:go-offline -B'
+                    sh 'mvn clean install' 
+                    sh 'mvn sonar:sonar -Dsonar.login=squ_5e56d72387698ef32e9ee9112389baa473aadb07'
+                    
+                }
+            }
+
         stage('ACR LOGIN & PUSH') {
             steps {
                 sh 'docker login devops2022.azurecr.io -u ${ACRCreds_USR} -p ${ACRCreds_PSW}'
