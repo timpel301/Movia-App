@@ -11,7 +11,7 @@ resources:
 - k8s/pgadmin-service.yaml
 - k8s/backend.yaml
 - k8s/kibana.yaml
-- k8s/sonarqube.yaml
+- k8s/sonarqube-1.yaml
 - k8s/kube-prometheus-stack
 images:
 - name: devops2022.azurecr.io/teamtechbackend
