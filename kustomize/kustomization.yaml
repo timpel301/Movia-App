@@ -12,7 +12,7 @@ resources:
 - k8s/backend.yaml
 - k8s/kibana.yaml
 - k8s/sonarqube.yaml
-- ../kube-prometheus-stack/Chart.yaml
+- k8s/kube-prometheus-stack/Chart.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
   newTag: 90c5bd85bcd330599d3e077ff1b15515e0565ce3
