@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
 
-         stage('Scan'){
+        stage('Scan'){
             agent{
                 docker {
                     image 'maven:3.8.7-openjdk-18-slim'
@@ -21,6 +21,7 @@ pipeline {
                     
                 }
             }
+        }
 
         stage('ACR LOGIN & PUSH') {
             steps {
