@@ -130,9 +130,8 @@ metadata:
 spec:
   # accessModes:
   #   - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
+  capacity:
+    storage: 100Mi
 
 ---
 apiVersion: v1
@@ -144,9 +143,8 @@ metadata:
 spec:
   # accessModes:
   #   - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
+  capacity:
+    storage: 100Mi
 
 ---
 apiVersion: v1
@@ -158,9 +156,8 @@ metadata:
 spec:
   # accessModes:
   #   - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
+  capacity:
+    storage: 100Mi
 
 ---
 apiVersion: v1
@@ -172,9 +169,8 @@ metadata:
 spec:
   # accessModes:
   #   - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
+  capacity:
+    storage: 100Mi
 
 # ---
 # apiVersion: networking.k8s.io/v1
@@ -201,9 +197,8 @@ metadata:
 spec:
   # accessModes:
   #   - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
+  capacity:
+    storage: 100Mi
 
 ---
 apiVersion: v1
@@ -215,7 +210,6 @@ metadata:
 spec:
   # accessModes:
   #   - ReadWriteOnce
-  resources:
-    requests:
-      storage: 100Mi
+  capacity:
+    storage: 100Mi
 
