@@ -3,9 +3,9 @@ package de.teamtech.moviereservation.controller.controller;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.HttpStatus;
@@ -22,6 +22,8 @@ import java.sql.Statement;
 @RestController
 @SpringBootApplication
 public class ControllerApplication {
+    
+private static final Logger logger = LoggerFactory.getLogger(ControllerApplication.class);
 
     @PostMapping("/booking")
 public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
@@ -58,19 +60,13 @@ public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
         // Return a response
         return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
     } catch (SQLException e) {
-        e.printStackTrace();
+        logger.error("An error occured with the database connection",e.getMessage(),e);
         return new ResponseEntity<>("Error: database error", HttpStatus.INTERNAL_SERVER_ERROR);
     } catch (Exception e) {
         return new ResponseEntity<>("Error: JSON parsing error", HttpStatus.BAD_REQUEST);
     }
 }
 
-
-    // dummy get request
-    @GetMapping("/alive")
-    public String alive() {
-        return "alive";
-    }
 
 
     public static void main(String[] args) {
