@@ -20,9 +20,9 @@ spec:
         ports:
         - containerPort: 80
       - name: nginx-exporter
-        image: nginx/nginx-prometheus-exporter:v0.10.0
+        image: bitnami/nginx-exporter
         args:
-        - '-nginx.scrape-uri=http://localhost:80/nginx_status'
+        - '-nginx.scrape-uri=http://20.31.107.48:80/nginx_status'
         ports:
         - containerPort: 9113
         readinessProbe:
