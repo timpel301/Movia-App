@@ -5,11 +5,12 @@ metadata:
 data:
   prometheus.yaml: |-
     global:
-      scrape_interval: 15s
-      evaluation_interval: 15s
+      scrape_interval: 5m
+      scrape_timeout: 1m
+      evaluation_interval: 1m
 
     scrape_configs:
-    - job_name: 'tech.devops2022.de'
+    - job_name: 'spring-actuator'
       scheme: https
       metrics_path: '/actuator/prometheus'
       static_configs:
