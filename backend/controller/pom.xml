@@ -27,7 +27,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		  </dependency>
-		  
+		  <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-dependencies</artifactId>
+			<version>3.0.2</version>
+			<type>pom</type>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
@@ -84,6 +90,10 @@
 			<artifactId>micrometer-registry-prometheus</artifactId>
 			<version>1.0.0-rc.9</version>
 		</dependency> -->
+		<dependency>
+			<groupId>io.prometheus</groupId>
+			<artifactId>simpleclient_pushgateway</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
