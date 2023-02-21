@@ -16,7 +16,10 @@ spec:
       - name: backend
         image: devops2022.azurecr.io/teamtechbackend:v0.1.18
         ports:
-        - containerPort: 8080
+        - name: http
+          containerPort: 8080
+        - name: prometheus
+          containerPort: 9090
         envFrom:
           - configMapRef:
               name: backend-config
@@ -28,8 +31,13 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 5000
-      targetPort: 8080
+   ports:
+    - name: http
+      port: 80
+      targetPort: http
+    - name: prometheus
+      port: 9090
+      targetPort: prometheus
   selector:
     app: backend
 ---
