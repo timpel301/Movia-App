@@ -19,6 +19,10 @@ spec:
         image: devops2022.azurecr.io/tech:latest
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: nginx-metrics-config
+          mountPath: /etc/nginx/conf.d/nginx.conf
+          subPath: nginx.conf
       - name: nginx-exporter
         image: nginx/nginx-prometheus-exporter
         args:
@@ -31,10 +35,6 @@ spec:
             port: 9113
           initialDelaySeconds: 5
           periodSeconds: 5
-        volumeMounts:
-        - name: nginx-metrics-config
-          mountPath: /etc/nginx/conf.d/nginx.conf
-          subPath: nginx.conf
       volumes:
       - name: nginx-metrics-config
         configMap:
