@@ -13,4 +13,4 @@ data:
     - job_name: 'spring'
       metrics_path: 'actuator/prometheus'
       static_configs:
-        - targets: ['tech.devops2022.de:5000']
+        - targets: ['20.31.147.21:5000']
