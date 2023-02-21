@@ -20,7 +20,7 @@ spec:
         ports:
         - containerPort: 80
       - name: nginx-exporter
-        image: docker pull nginx/nginx-prometheus-exporter
+        image: nginx/nginx-prometheus-exporter
         args:
         - '-nginx.scrape-uri=http://20.31.107.48:80/nginx_status'
         ports:
