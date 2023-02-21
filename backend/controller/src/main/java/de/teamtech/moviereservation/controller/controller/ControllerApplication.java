@@ -29,7 +29,8 @@ public class ControllerApplication {
 public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
     String usr =  System.getenv("POSTGRES_USR");
     String pwd =  System.getenv("POSTGRES_PWD");
-    try (Connection conn = DriverManager.getConnection("jdbc:postgresql://20.23.133.107:5432/postgres",usr , pwd)) {
+    String host = System.getenv("POSTGRES_HOST");
+    try (Connection conn = DriverManager.getConnection(host ,usr ,pwd)) {
         // Extract data from the JSON payload
         JSONObject jsonObj = new JSONObject(jsonPayload);
         String title = jsonObj.getString("title");
