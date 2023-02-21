@@ -10,7 +10,7 @@ data:
       evaluation_interval: 15s
 
     scrape_configs:
-    - job_name: 'spring'
-      metrics_path: '/actuator/prometheus'
+    - job_name: 'springboot'
+      metrics_path: '/actuator'
       static_configs:
         - targets: ['backend-service.teamtech-ns.svc.cluster.local:5000']
