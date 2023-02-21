@@ -3,10 +3,12 @@ kind: Service
 metadata:
   name: nagios-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: nagios-core
   ports:
-    - port: 3030
+    - port: 80
+      targetPort: 80
+      nodePort: 30008
     
       
