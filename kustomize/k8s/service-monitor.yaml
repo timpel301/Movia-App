@@ -1,0 +1,12 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: spring-prometheus-service-monitor
+spec:
+  selector:
+    matchLabels:
+      app: backend-deployment
+  endpoints:
+  - port: "8080"
+    path: "/actuator/prometheus"
