@@ -18,7 +18,7 @@ resources:
 - k8s/Grafana/grafana-datasource-config.yaml
 - k8s/Grafana/grafana-deployment.yaml
 - k8s/Grafana/grafana-service.yaml
-- k8s/Nagios/nginx-deployment.yaml
+- k8s/Nagios/nagios-deployment.yaml
 - k8s/Nagios/nagios-service.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
