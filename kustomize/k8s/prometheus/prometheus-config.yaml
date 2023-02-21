@@ -9,8 +9,24 @@ data:
       scrape_timeout: 15s
       evaluation_interval: 15s
 
+    # scrape_configs:
+    # - job_name: 'springboot'
+    #   metrics_path: '/actuator/prometheus'
+    #   static_configs:
+    #     - targets: ['20.71.83.112:8080']
     scrape_configs:
-    - job_name: 'springboot'
-      metrics_path: '/actuator/prometheus'
+    - job_name: 'nginx'
+      scrape_interval: 5s
       static_configs:
-        - targets: ['20.71.83.112:8080']
+        - targets: ['hellow-world:80'] # Replace with the actual service name and port
+      metrics_path: /metrics
+      params:
+        module: [nginx]
+      relabel_configs:
+        - source_labels: [__address__]
+          target_label: __param_target
+        - source_labels: [__param_target]
+          target_label: instance
+        - target_label: __address__
+          replacement: nginx-exporter:9113 # Replace with the actual exporter name and port
+

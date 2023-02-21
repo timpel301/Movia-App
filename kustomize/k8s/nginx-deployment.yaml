@@ -19,4 +19,24 @@ spec:
         image: devops2022.azurecr.io/tech:latest
         ports:
         - containerPort: 80
+      - name: nginx-exporter
+        image: nginx/nginx-prometheus-exporter:v0.10.0
+        args:
+        - '-nginx.scrape-uri=http://localhost:80/nginx_status'
+        ports:
+        - containerPort: 9113
+        readinessProbe:
+          httpGet:
+            path: /metrics
+            port: 9113
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: nginx-metrics-config
+          mountPath: /etc/nginx/conf.d/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: nginx-metrics-config
+        configMap:
+          name: nginx-metrics-config
 
