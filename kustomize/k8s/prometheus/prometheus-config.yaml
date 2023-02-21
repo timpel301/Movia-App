@@ -13,4 +13,4 @@ data:
     - job_name: 'springboot'
       metrics_path: '/actuator/prometheus'
       static_configs:
-        - targets: ['backend-service.teamtech-ns.svc.cluster.local:5000']
+        - targets: ['backend-service.teamtech-ns.svc.cluster.local:8080']

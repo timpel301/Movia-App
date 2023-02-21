@@ -8,5 +8,5 @@ spec:
     matchLabels:
       app: backend-deployment
   endpoints:
-  - port: "8080"
+  - port: 8080
     path: "/actuator/prometheus"
