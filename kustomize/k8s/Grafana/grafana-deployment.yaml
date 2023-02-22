@@ -19,9 +19,9 @@ spec:
         image: grafana/grafana:latest
         ports:
         - containerPort: 3000
-          env:
-          - name: GF_AUTH_DISABLE_LOGIN_FORM
-            value: "true"
+        env:
+        - name: GF_AUTH_DISABLE_LOGIN_FORM
+          value: "true"
         resources:
           limits:
             memory: "1Gi"
