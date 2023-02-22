@@ -1,7 +1,10 @@
 package de.teamtech.moviereservation.controller.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.metrics.export.prometheus.PrometheusScrapeEndpoint;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
@@ -22,8 +25,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.prometheus.PrometheusConfig;
+import io.micrometer.prometheus.PrometheusMeterRegistry;
+import io.prometheus.client.CollectorRegistry;
 
 @RestController
 @SpringBootApplication
@@ -31,22 +35,27 @@ import io.micrometer.core.instrument.MeterRegistry;
 public class ControllerApplication {
     
 private static final Logger logger = LoggerFactory.getLogger(ControllerApplication.class);
-private final MeterRegistry meterRegistry;
 
-    public ControllerApplication(MeterRegistry meterRegistry) {
-        this.meterRegistry = meterRegistry;
-    }
 
-    @GetMapping("/metrics")
-    public String metrics() {
-        return "# HELP api_request_total Total number of requests\n"
-                + "# TYPE api_request_total counter\n"
-                + "api_request_total{method=\"GET\", endpoint=\"/api/foo\"} "
-                + meterRegistry.counter("api.request.total", "method", "GET", "endpoint", "/api/foo").count() + "\n";
-    }
+@Bean
+public PrometheusMeterRegistry meterRegistry() {
+    return new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
+}
+
+@Bean
+public PrometheusScrapeEndpoint prometheusEndpoint(CollectorRegistry prometheusMeterRegistry) {
+    return new PrometheusScrapeEndpoint(prometheusMeterRegistry);
+}
+
+
+@Autowired
+private PrometheusMeterRegistry meterRegistry;
 
     @PostMapping("/booking")
 public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
+
+    meterRegistry.counter("bookings_created_total").increment();
+
     String usr =  System.getenv("POSTGRES_USR");
     String pwd =  System.getenv("POSTGRES_PWD");
     String host = System.getenv("POSTGRES_HOST");
@@ -85,6 +94,12 @@ public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
     } catch (Exception e) {
         return new ResponseEntity<>("Error: JSON parsing error", HttpStatus.BAD_REQUEST);
     }
+
+}
+
+@GetMapping("/metrics")
+public String metrics() {
+    return meterRegistry.scrape();
 }
 
 

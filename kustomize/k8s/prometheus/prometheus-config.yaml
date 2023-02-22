@@ -15,10 +15,11 @@ data:
     #   static_configs:
     #     - targets: ['backend-service:5000']
     scrape_configs:
-    - job_name: 'spring-boot-app'
-      metrics_path: '/metrics'
+    - job_name: 'backend-counter'
+      metrics_path: '/management/prometheus'
+      scheme: 'http'
       static_configs:
-        - targets: ['backend-service:5000']
+        - targets: ['backend-service:8081']
     # scrape_configs:
     # - job_name: 'nginx'
     #   scrape_interval: 5s
