@@ -37,29 +37,29 @@ public class ControllerApplication {
     
 private static final Logger logger = LoggerFactory.getLogger(ControllerApplication.class);
 
-@Autowired
-private PrometheusMeterRegistry meterRegistry;
+// @Autowired
+// private PrometheusMeterRegistry meterRegistry;
 
-private Counter bookingsCounter;
+// private Counter bookingsCounter;
 
-@Bean
-public PrometheusMeterRegistry meterRegistry() {
-    return new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
-}
+// @Bean
+// public PrometheusMeterRegistry meterRegistry() {
+//     return new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
+// }
 
-@Bean
-public PrometheusScrapeEndpoint prometheusEndpoint(PrometheusMeterRegistry prometheusMeterRegistry) {
-    return new PrometheusScrapeEndpoint(prometheusMeterRegistry.getPrometheusRegistry());
-}
+// @Bean
+// public PrometheusScrapeEndpoint prometheusEndpoint(PrometheusMeterRegistry prometheusMeterRegistry) {
+//     return new PrometheusScrapeEndpoint(prometheusMeterRegistry.getPrometheusRegistry());
+// }
 
-@Bean
-@DependsOn("meterRegistry")
-public Counter bookingsCounter(PrometheusMeterRegistry meterRegistry) {
-    bookingsCounter = Counter.builder("bookings_created_total")
-            .description("The total number of bookings created")
-            .register(meterRegistry);
-    return bookingsCounter;
-}
+// @Bean
+// @DependsOn("meterRegistry")
+// public Counter bookingsCounter(PrometheusMeterRegistry meterRegistry) {
+//     bookingsCounter = Counter.builder("bookings_created_total")
+//             .description("The total number of bookings created")
+//             .register(meterRegistry);
+//     return bookingsCounter;
+// }
 
 
 // @Bean
@@ -105,8 +105,8 @@ public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
             pstmt.executeUpdate();
         }
 
-         // increment the bookings counter
-         bookingsCounter.increment();
+        //  // increment the bookings counter
+        //  bookingsCounter.increment();
 
         // Return a response
         return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
