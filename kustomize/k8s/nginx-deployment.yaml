@@ -36,6 +36,6 @@ spec:
       - name: nginx-config
         configMap:
           name: nginx-config
-          itams:
+          items:
             - key: default.conf
               path: default.conf

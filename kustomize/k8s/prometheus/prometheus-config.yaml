@@ -40,5 +40,5 @@ data:
     #     - source_labels: [__param_target]
     #       target_label: instance
     #     - target_label: __address__
-    #       replacement: nginx-exporter:9113 # Replace with the actual exporter name and port
+    #       replacement: nginx-prometheus-exporter:9113 # Replace with the actual exporter name and port
 
