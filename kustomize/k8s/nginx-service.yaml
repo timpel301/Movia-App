@@ -9,6 +9,7 @@ spec:
   ports:
   # - name: teamtech
   - port: 80 
+    protocol: TCP
     targetPort: 80
   # - name: nginx-prometheus-exporter
   #   port: 9113
