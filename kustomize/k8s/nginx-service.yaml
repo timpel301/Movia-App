@@ -11,11 +11,11 @@ spec:
   - port: 80 
     protocol: TCP
     targetPort: 80
-  # - name: nginx-prometheus-exporter
-  #   port: 9113
-  #   targetPort: 9113
-  # - name: https
-  #   port: 443
-  #   targetPort: 443
+  - name: nginx-prometheus-exporter
+    port: 9113
+    targetPort: 9113
+  - name: https
+    port: 443
+    targetPort: 443
   selector:
     app: teamtech
