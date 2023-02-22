@@ -22,15 +22,15 @@ spec:
         image: devops2022.azurecr.io/tech:latest
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: nginx-config
-          mountPath: /etc/nginx/
-      - name: nginx-prometheus-exporter
-        image: nginx/nginx-prometheus-exporter
-        args:
-        - '-nginx.scrape-uri=https://tech.devops2022.de/nginx_status'
-        ports:
-        - containerPort: 9113
+      #   volumeMounts:
+      #   - name: nginx-config
+      #     mountPath: /etc/nginx/
+      # - name: nginx-prometheus-exporter
+      #   image: nginx/nginx-prometheus-exporter
+      #   args:
+      #   - '-nginx.scrape-uri=https://tech.devops2022.de/nginx_status'
+      #   ports:
+      #   - containerPort: 9113
       #   readinessProbe:
       #     httpGet:
       #       path: /metrics
@@ -43,8 +43,8 @@ spec:
       #       cpu: 500m
       #     ports:
       #     - containerPort: 9113
-      volumes:
-        - configMap:
-            # defaultMode: 420
-            name: nginx-config
-          name: nginx-config
+      # volumes:
+      #   - configMap:
+      #       # defaultMode: 420
+      #       name: nginx-config
+      #     name: nginx-config
