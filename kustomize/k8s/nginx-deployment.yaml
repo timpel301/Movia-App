@@ -23,7 +23,7 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: nginx-metrics-config
+        - name: nginx-config
           mountPath: /etc/nginx/
       - name: nginx-exporter
         image: nginx/nginx-prometheus-exporter
