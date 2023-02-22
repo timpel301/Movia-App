@@ -18,8 +18,8 @@ spec:
         ports:
         - name: http
           containerPort: 8080
-        - name: prometheus
-          containerPort: 9090
+        # - name: prometheus
+        #   containerPort: 9090
         envFrom:
           - configMapRef:
               name: backend-config
@@ -32,11 +32,11 @@ spec:
   type: LoadBalancer
   ports:
   - name: http
-    port: 8080
-    targetPort: http
-  - name: prometheus
-    port: 9090
-    targetPort: prometheus
+    port: 5000
+    targetPort: 8080
+  # - name: prometheus
+  #   port: 9090
+  #   targetPort: 9090
   selector:
     app: backend
 ---

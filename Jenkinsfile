@@ -31,6 +31,8 @@ pipeline {
                 sh "docker push devops2022.azurecr.io/tech:$GIT_COMMIT"
                 sh "docker build -t devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT ./backend"
                 sh "docker push devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT"
+                sh "docker rmi devops2022.azurecr.io/tech:$GIT_COMMIT"
+                sh "docker rmi devops2022.azurecr.io/teamtechbackend:$GIT_COMMIT"
             }
         }
         //stage('HELM ADD REPO & INSTALL CHART') {
@@ -86,6 +88,7 @@ pipeline {
                     //sh("git status")
                     sh("git add kustomize/kustomization.yaml")
                     //sh("git status")
+                    sh("git fetch && git merge -X theirs -m 'merge'")
                     sh("git commit -m 'modified frontend and backend with $GIT_COMMIT'")
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
                 }

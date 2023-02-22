@@ -13,20 +13,26 @@ data:
     # - job_name: 'springboot'
     #   metrics_path: '/actuator/prometheus'
     #   static_configs:
-    #     - targets: ['20.71.83.112:8080']
+    #     - targets: ['backend-service:5000']
     scrape_configs:
-    - job_name: 'nginx'
-      scrape_interval: 5s
+    - job_name: 'backend-counter'
+      metrics_path: '/management/prometheus'
+      scheme: 'http'
       static_configs:
-        - targets: ['hellow-world:80'] # Replace with the actual service name and port
-      metrics_path: /metrics
-      params:
-        module: [nginx]
-      relabel_configs:
-        - source_labels: [__address__]
-          target_label: __param_target
-        - source_labels: [__param_target]
-          target_label: instance
-        - target_label: __address__
-          replacement: nginx-exporter:9113 # Replace with the actual exporter name and port
+        - targets: ['backend-service:8081']
+    # scrape_configs:
+    # - job_name: 'nginx'
+    #   scrape_interval: 5s
+    #   static_configs:
+    #     - targets: ['hellow-world:80'] # Replace with the actual service name and port
+    #   metrics_path: /metrics
+    #   params:
+    #     module: [nginx]
+    #   relabel_configs:
+    #     - source_labels: [__address__]
+    #       target_label: __param_target
+    #     - source_labels: [__param_target]
+    #       target_label: instance
+    #     - target_label: __address__
+    #       replacement: nginx-exporter:9113 # Replace with the actual exporter name and port
 
