@@ -113,12 +113,12 @@ spec:
         image: grafana/grafana:latest
         ports:
         - containerPort: 3000
-        env:
-        - name: GF_SECURITY_ADMIN_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: grafana-secret
-              key: admin-password
+        # env:
+        # - name: GF_SECURITY_ADMIN_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: grafana-secret
+        #       key: admin-password
         volumeMounts:
         - name: grafana-data
           mountPath: /var/lib/grafana
@@ -132,5 +132,5 @@ spec:
       - name: grafana-config
         configMap:
           name: grafana-config
-      imagePullSecrets:
-      - name: regcred
+      # imagePullSecrets:
+      # - name: regcred
