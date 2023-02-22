@@ -7,8 +7,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - name: teamtech
-    port: 80 
+  # - name: teamtech
+  - port: 80 
     targetPort: 80
   # - name: nginx-prometheus-exporter
   #   port: 9113
