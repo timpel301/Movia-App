@@ -59,5 +59,11 @@ spec:
               name: prometheus
               port:
                 number: 9090
-        
+        - pathType: Prefix
+          path: "/Nagios"
+          backend:
+            service:
+              name: nagios-core
+              port:
+                number: 80
                 
