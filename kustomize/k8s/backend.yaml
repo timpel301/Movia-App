@@ -32,8 +32,8 @@ spec:
   type: LoadBalancer
   ports:
   - name: http
-    port: 8080
-    targetPort: http
+    port: 5000
+    targetPort: 8080
   - name: prometheus
     port: 9090
     targetPort: prometheus
