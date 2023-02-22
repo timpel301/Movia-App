@@ -21,12 +21,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import io.micrometer.core.instrument.MeterRegistry;
+
 @RestController
 @SpringBootApplication
 
 public class ControllerApplication {
     
 private static final Logger logger = LoggerFactory.getLogger(ControllerApplication.class);
+private final MeterRegistry meterRegistry;
+
+    public ControllerApplication(MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
+    }
+
+    @GetMapping("/metrics")
+    public String metrics() {
+        return "# HELP api_request_total Total number of requests\n"
+                + "# TYPE api_request_total counter\n"
+                + "api_request_total{method=\"GET\", endpoint=\"/api/foo\"} "
+                + meterRegistry.counter("api.request.total", "method", "GET", "endpoint", "/api/foo").count() + "\n";
+    }
 
     @PostMapping("/booking")
 public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
