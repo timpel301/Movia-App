@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.metrics.export.prometheus.PrometheusScrapeEndpoint;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
@@ -93,6 +94,7 @@ public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
 }
 
 @Bean
+@DependsOn("meterRegistry")
 public PrometheusScrapeEndpoint prometheusEndpoint(PrometheusMeterRegistry prometheusMeterRegistry) {
     return new PrometheusScrapeEndpoint(prometheusMeterRegistry.getPrometheusRegistry());
 }
