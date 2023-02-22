@@ -25,12 +25,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.springframework.web.bind.annotation.GetMapping;
 
-import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.prometheus.PrometheusConfig;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
-import io.prometheus.client.CollectorRegistry;
+
 
 @RestController
 @SpringBootApplication
@@ -39,18 +37,18 @@ public class ControllerApplication {
     
 private static final Logger logger = LoggerFactory.getLogger(ControllerApplication.class);
 
-@Bean
-public PrometheusMeterRegistry meterRegistry() {
-    return new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
-}
+// @Bean
+// public PrometheusMeterRegistry meterRegistry() {
+//     return new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
+// }
 
-@Autowired
-private PrometheusMeterRegistry meterRegistry;
+// @Autowired
+// private PrometheusMeterRegistry meterRegistry;
 
     @PostMapping("/booking")
 public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
 
-    meterRegistry.counter("bookings_created_total").increment();
+    // meterRegistry.counter("bookings_created_total").increment();
 
     String usr =  System.getenv("POSTGRES_USR");
     String pwd =  System.getenv("POSTGRES_PWD");
@@ -93,11 +91,11 @@ public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
 
 }
 
-@Bean
-@DependsOn("meterRegistry")
-public PrometheusScrapeEndpoint prometheusEndpoint(PrometheusMeterRegistry prometheusMeterRegistry) {
-    return new PrometheusScrapeEndpoint(prometheusMeterRegistry.getPrometheusRegistry());
-}
+// @Bean
+// @DependsOn("meterRegistry")
+// public PrometheusScrapeEndpoint prometheusEndpoint(PrometheusMeterRegistry prometheusMeterRegistry) {
+//     return new PrometheusScrapeEndpoint(prometheusMeterRegistry.getPrometheusRegistry());
+// }
 
 
     public static void main(String[] args) {
