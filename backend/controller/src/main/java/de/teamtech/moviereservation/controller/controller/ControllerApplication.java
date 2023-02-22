@@ -105,6 +105,9 @@ public ResponseEntity<String> createBooking(@RequestBody String jsonPayload) {
             pstmt.executeUpdate();
         }
 
+         // increment the bookings counter
+         bookingsCounter.increment();
+
         // Return a response
         return new ResponseEntity<>("Booking created successfully!", HttpStatus.CREATED);
     } catch (SQLException e) {
