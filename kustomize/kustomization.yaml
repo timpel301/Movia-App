@@ -22,6 +22,6 @@ resources:
 - k8s/Nagios/nagios-service.yaml
 images:
 - name: devops2022.azurecr.io/teamtechbackend
-  newTag: 952c6d760d53e08542ebddf0c470032f81d8afd1
+  newTag: 0bb8f7cf5f717359dbf87587178ea943a81cfa5a
 - name: devops2022.azurecr.io/tech
-  newTag: 952c6d760d53e08542ebddf0c470032f81d8afd1
+  newTag: 0bb8f7cf5f717359dbf87587178ea943a81cfa5a
