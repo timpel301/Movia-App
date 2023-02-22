@@ -25,7 +25,7 @@ data:
       scrape_interval: 5s
       metrics_path: "/metrics"
       static_configs:
-        - targets: ['nginx-service.teamtech-ns.svc.cluster.local:9113']
+        - targets: ['hellow-world.teamtech-ns.svc.cluster.local:9113']
     # scrape_configs:
     # - job_name: 'nginx'
     #   scrape_interval: 5s
