@@ -16,5 +16,4 @@ spec:
         - name: nagios-container
           image: jasonrivers/nagios
           ports:
-            - containerPort: 
-              name: web
+            - containerPort: 80
