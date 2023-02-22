@@ -5,7 +5,7 @@ pipeline {
     }
     stages {
 
-        stage('Scan'){
+        stage('SONAR SCAN'){
             agent{
                 docker {
                     image 'maven:3.8.7-openjdk-18-slim'
