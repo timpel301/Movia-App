@@ -25,7 +25,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+import io.micrometer.core.instrument.Counter;
 import io.micrometer.prometheus.PrometheusConfig;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
 
@@ -36,6 +36,31 @@ import io.micrometer.prometheus.PrometheusMeterRegistry;
 public class ControllerApplication {
     
 private static final Logger logger = LoggerFactory.getLogger(ControllerApplication.class);
+
+@Autowired
+private PrometheusMeterRegistry meterRegistry;
+
+private Counter bookingsCounter;
+
+@Bean
+public PrometheusMeterRegistry meterRegistry() {
+    return new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
+}
+
+@Bean
+public PrometheusScrapeEndpoint prometheusEndpoint(PrometheusMeterRegistry prometheusMeterRegistry) {
+    return new PrometheusScrapeEndpoint(prometheusMeterRegistry.getPrometheusRegistry());
+}
+
+@Bean
+@DependsOn("meterRegistry")
+public Counter bookingsCounter(PrometheusMeterRegistry meterRegistry) {
+    bookingsCounter = Counter.builder("bookings_created_total")
+            .description("The total number of bookings created")
+            .register(meterRegistry);
+    return bookingsCounter;
+}
+
 
 // @Bean
 // public PrometheusMeterRegistry meterRegistry() {
