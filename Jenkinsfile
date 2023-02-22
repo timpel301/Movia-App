@@ -88,6 +88,7 @@ pipeline {
                     //sh("git status")
                     sh("git add kustomize/kustomization.yaml")
                     //sh("git status")
+                    sh("git fetch && git merge -X theirs -m 'merge'")
                     sh("git commit -m 'modified frontend and backend with $GIT_COMMIT'")
                     sh("git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/chriskovski/teamtech.git main")
                 }
