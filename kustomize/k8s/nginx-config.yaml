@@ -4,21 +4,40 @@ metadata:
   name: nginx-config
   namespace: teamtech-ns
 data:
-  nginx.conf: |
-    worker_processes 1;
-    events {
-      worker_connections 1024;
-    }
-    http {
-      default_type text/css; 
-      server {
-        location / {
-          root   /usr/share/nginx/html;
-          index  index.html index.htm;
-        }
-        location /nginx_status {
-          stub_status on;
-          access_log off;
-        }
+  # nginx.conf: |
+  #   worker_processes 1;
+  #   events {
+  #     worker_connections 1024;
+  #   }
+  #   http {
+  #     default_type text/css; 
+  #     server {
+  #       location / {
+  #         root   /usr/share/nginx/html;
+  #         index  index.html index.htm;
+  #       }
+  #       location /nginx_status {
+  #         stub_status on;
+  #         access_log off;
+  #       }
+  #     }
+  #   }
+  default.conf: |
+    server {
+      listen 80;
+      server_name tech.devops2022.de;
+
+      location / {
+        root /usr/share/nginx/html;
+        index index.html indexhtm;
       }
+
+      location /nginx_status {
+        stub_status on;
+      }
+
+      # error_page 500 02 503 504 /50x.html;
+      # location = /50x.html {
+      #   root /usr/share/nginx/html;
+      # }
     }

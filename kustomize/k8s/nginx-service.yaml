@@ -5,7 +5,7 @@ metadata:
   labels:
     app: teamtech
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: teamtech
     port: 80 

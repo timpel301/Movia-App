@@ -2,11 +2,13 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: spring-prometheus-service-monitor
+  name: nginx-prometheus-service-monitor
+  namespace: teamtech-ns
 spec:
   selector:
     matchLabels:
-      app: backend-deployment
+      app: teamtech
   endpoints:
-  - port: 8080
-    path: "/actuator/prometheus"
+  - interval: 5s
+    port: nginx-prometheus-exporter
+    path: /metrics
