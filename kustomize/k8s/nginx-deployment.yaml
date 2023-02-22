@@ -25,7 +25,7 @@ spec:
         volumeMounts:
         - name: nginx-config
           mountPath: /etc/nginx/
-      - name: nginx-exporter
+      - name: nginx-prometheus-exporter
         image: nginx/nginx-prometheus-exporter
         args:
         - '-nginx.scrape-uri=https://tech.devops2022.de/nginx_status'
