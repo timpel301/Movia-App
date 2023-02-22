@@ -79,7 +79,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
 			<version>1.10.3</version>
@@ -98,8 +98,8 @@
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-core</artifactId>
-			<version>1.10.3</version>
-		  </dependency>
+			<version>1.10.3</version> 
+		  </dependency> -->
 	</dependencies>
 
 	<build>
