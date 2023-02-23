@@ -16,6 +16,12 @@ spec:
         - name: pgadmin4
           image: dpage/pgadmin4
           env:
+            - name: PGADMIN_CONFIG_FILE
+              value: /pgadmin4/config_local.py
+ ##           - name: PGADMIN_DEFAULT_PASSWORD
+          volumeMounts:
+            - name: pgadmin-config
+              mountPath: /pgadmin4
             - name: PGADMIN_DEFAULT_EMAIL
               value: "eabdien@web.de"
             - name: PGADMIN_DEFAULT_PASSWORD
@@ -28,3 +34,7 @@ spec:
           ports:
             - containerPort: 80
               name: pgadminport
+          volumes:
+          - name: pgadmin-config
+            configMap:
+              name: pgadmin-config
