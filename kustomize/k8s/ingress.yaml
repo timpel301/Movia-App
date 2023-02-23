@@ -21,7 +21,7 @@ spec:
           path: "/"
           backend:
             service:
-              name: hello-world
+              name: teamtech-service
               port:
                 number: 80
         # - pathType: Prefix
