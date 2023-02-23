@@ -16,25 +16,24 @@ spec:
         - name: pgadmin4
           image: dpage/pgadmin4
           env:
-            - name: PGADMIN_CONFIG_FILE
-              value: /pgadmin4/config_local.py
- ##           - name: PGADMIN_DEFAULT_PASSWORD
+          - name: PGADMIN_DEFAULT_EMAIL
+            value: "eabdien@web.de"
+          - name: PGADMIN_DEFAULT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pgadmin-secret
+                key: pgadmin-default-password
+          - name: PGADMIN_PORT
+            value: "80"
+          - name: PGADMIN_CONFIG_FILE
+            value: /pgadmin4/config_local.py
           volumeMounts:
             - name: pgadmin-config
               mountPath: /pgadmin4
-            - name: PGADMIN_DEFAULT_EMAIL
-              value: "eabdien@web.de"
-            - name: PGADMIN_DEFAULT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: pgadmin-secret
-                  key: pgadmin-default-password
-            - name: PGADMIN_PORT
-              value: "80"
           ports:
             - containerPort: 80
               name: pgadminport
-          volumes:
-          - name: pgadmin-config
-            configMap:
-              name: pgadmin-config
+      volumes:
+      - name: pgadmin-config
+        configMap:
+          name: pgadmin-config
