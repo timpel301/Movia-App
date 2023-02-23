@@ -29,7 +29,7 @@ data:
 
       location / {
         root /usr/share/nginx/html;
-        index index.html indexhtm;
+        index index.html index.htm;
       }
 
       location /nginx_status {
