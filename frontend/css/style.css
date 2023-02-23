@@ -105,10 +105,9 @@ nav ul {
   }
   
   img:hover {
-    border: solid #e83390 2px;
-    box-shadow: inset 1px 0px 8px 11px #000000;
-
+    transform: scale(1.05);
   }
+
   .logo {
     border: none;
     height: 100%;
